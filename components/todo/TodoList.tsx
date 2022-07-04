@@ -1,11 +1,13 @@
-import React from 'react';
-import { todos } from '../../data';
+import React, { useContext } from 'react';
+import { TodoContext } from '../../store/TodoContext';
 import TodoItem from './TodoItem';
 
 const TodoList: React.FC = () => {
+  const todoCtx = useContext(TodoContext);
+
   return (
     <ul className="grid">
-      {todos.map((todo) => (
+      {todoCtx?.todos.map((todo) => (
         <li key={todo.id}>
           <TodoItem
             id={todo.id}

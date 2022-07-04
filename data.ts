@@ -4,7 +4,14 @@ export interface ITodo {
   title: string;
 }
 
-export const todos: ITodo[] = [
+export type TodoContextType = {
+  todos: ITodo[];
+  addTodo: (todo: ITodo) => void;
+  deleteTodo: (todoId: string) => void;
+  updateTodo: (todo: ITodo) => void;
+};
+
+export const initialTodos: ITodo[] = [
   {
     id: (Date.now() + Math.random()).toString(),
     completed: true,
