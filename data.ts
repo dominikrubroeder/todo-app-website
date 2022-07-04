@@ -7,7 +7,7 @@ export interface ITodo {
 export const todos: ITodo[] = [
   {
     id: (Date.now() + Math.random()).toString(),
-    completed: false,
+    completed: true,
     title: 'Complete online JavaScript course',
   },
   {
