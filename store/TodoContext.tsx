@@ -10,8 +10,16 @@ type TodoProviderProps = {
 const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
   const [todos, setTodos] = useState<ITodo[]>(initialTodos);
 
+  const count = todos.length;
+
+  const completedCount = todos.filter((todo) => todo.completed).length;
+
+  const incompletedCount = todos.filter(
+    (todo) => todo.completed === false
+  ).length;
+
   const addTodo = (newTodo: ITodo) => {
-    setTodos((previousState) => [...previousState, newTodo]);
+    setTodos((previousState) => [newTodo, ...previousState]);
   };
 
   const deleteTodo = (todoId: string) => {
@@ -26,7 +34,17 @@ const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
   };
 
   return (
-    <TodoContext.Provider value={{ todos, addTodo, deleteTodo, updateTodo }}>
+    <TodoContext.Provider
+      value={{
+        todos,
+        count,
+        completedCount,
+        incompletedCount,
+        addTodo,
+        deleteTodo,
+        updateTodo,
+      }}
+    >
       {children}
     </TodoContext.Provider>
   );

@@ -23,7 +23,7 @@ module.exports = {
       },
       backgroundImage: {
         'app-primary-background':
-          'linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%)',
+          'linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%))',
         'app-bg-desktop-dark': "url('/images/bg-desktop-dark.jpg')",
         'app-bg-desktop-light': "url('/images/bg-desktop-light.jpg')",
         'app-bg-mobile-dark': "url('/images/bg-mobile-dark.jpg')",

@@ -1,10 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { ITodo } from '../../data';
 import { TodoContext } from '../../store/TodoContext';
+import TodoCompletedInput from './TodoCompletedInput';
 
 const TodoAddForm: React.FC = () => {
   const todoCtx = useContext(TodoContext);
   const [newTodoTitle, setNewTodoTitle] = useState<string>('');
+  const [newTodoIsCompleted, setNewTodoIsCompleted] = useState<boolean>(false);
 
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -13,13 +15,14 @@ const TodoAddForm: React.FC = () => {
 
     const newTodo: ITodo = {
       id: (Date.now() + Math.random()).toString(),
-      completed: false,
+      completed: newTodoIsCompleted,
       title: newTodoTitle,
     };
 
     todoCtx?.addTodo(newTodo);
 
     setNewTodoTitle('');
+    setNewTodoIsCompleted(false);
   };
 
   return (
@@ -27,7 +30,10 @@ const TodoAddForm: React.FC = () => {
       className="flex items-center gap-4 bg-app-tdark-blue-desaturated-800 p-4 rounded-md"
       onSubmit={(e) => onSubmitHandler(e)}
     >
-      <div className="w-4 h-4 border border-app-tdark-gray-blue-600 rounded-full transition-all"></div>
+      <TodoCompletedInput
+        isCompleted={newTodoIsCompleted}
+        onClick={() => setNewTodoIsCompleted((previousState) => !previousState)}
+      />
 
       <input
         type="text"

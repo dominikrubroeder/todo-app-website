@@ -6,6 +6,9 @@ export interface ITodo {
 
 export type TodoContextType = {
   todos: ITodo[];
+  count: number;
+  completedCount: number;
+  incompletedCount: number;
   addTodo: (todo: ITodo) => void;
   deleteTodo: (todoId: string) => void;
   updateTodo: (todo: ITodo) => void;

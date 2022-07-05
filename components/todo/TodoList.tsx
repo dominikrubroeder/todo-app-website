@@ -7,13 +7,9 @@ const TodoList: React.FC = () => {
 
   return (
     <ul className="grid">
-      {todoCtx?.todos.map((todo) => (
+      {todoCtx?.todos.map((todo, index) => (
         <li key={todo.id}>
-          <TodoItem
-            id={todo.id}
-            title={todo.title}
-            completed={todo.completed}
-          />
+          <TodoItem todo={todo} isLast={index + 1 === todoCtx?.todos.length} />
         </li>
       ))}
     </ul>

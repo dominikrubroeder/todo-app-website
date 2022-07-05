@@ -1,18 +1,52 @@
-import React from 'react';
+import Image from 'next/image';
+import React, { useContext } from 'react';
 import { ITodo } from '../../data';
+import TodoCompletedInput from './TodoCompletedInput';
+import { TodoContext } from '../../store/TodoContext';
 
-const TodoItem: React.FC<ITodo> = (props) => {
+interface TodoItemProps {
+  todo: ITodo;
+  isLast: boolean;
+}
+
+const TodoItem: React.FC<TodoItemProps> = (props) => {
+  const todoCtx = useContext(TodoContext);
+  const todo = props.todo;
+
   return (
-    <div className="flex items-center gap-4 p-4 border-b border-b-app-tdark-gray-blue-600">
-      <div className="w-4 h-4 border border-app-tdark-gray-blue-600 rounded-full transition-all"></div>
+    <div
+      className={`flex items-center gap-4 p-4 border-b ${
+        props.isLast
+          ? 'border-b-transparent'
+          : 'border-b-app-tdark-gray-blue-600'
+      }`}
+    >
+      <TodoCompletedInput
+        isCompleted={todo.completed}
+        onClick={() => console.log('Update completed...')}
+      />
 
-      <h2
-        className={`${
-          props.completed ? 'line-through text-app-tdark-gray-blue-600' : ''
-        }`}
-      >
-        {props.title}
-      </h2>
+      <div className="group flex items-center justify-between w-full">
+        <h2
+          className={`${
+            todo.completed ? 'line-through text-app-tdark-gray-blue-600' : ''
+          }`}
+        >
+          {todo.title}
+        </h2>
+
+        <button
+          className="invisible opacity-0 cursor-pointer transition-all group-hover:opacity-100 group-hover:visible"
+          onClick={() => todoCtx?.deleteTodo(todo.id)}
+        >
+          <Image
+            src="/images/icon-cross.svg"
+            width={18}
+            height={18}
+            alt="Icon close"
+          />
+        </button>
+      </div>
     </div>
   );
 };
