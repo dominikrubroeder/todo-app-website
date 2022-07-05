@@ -33,6 +33,20 @@ const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
     console.log(`Updating todo: ${todo.title}`);
   };
 
+  // const hideCompleted = () => {
+  //   todos.map((todo) => {
+  //     if (todo.completed === true) todo.isVisible = false;
+  //   });
+
+  //   setTodos(todos);
+  // };
+
+  const clearCompleted = () => {
+    const incompletedTodos = todos.filter((todo) => todo.completed === false);
+
+    setTodos(incompletedTodos);
+  };
+
   return (
     <TodoContext.Provider
       value={{
@@ -43,6 +57,7 @@ const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
         addTodo,
         deleteTodo,
         updateTodo,
+        clearCompleted,
       }}
     >
       {children}

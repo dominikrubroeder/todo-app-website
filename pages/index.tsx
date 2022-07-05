@@ -57,7 +57,9 @@ const Home: NextPage = () => {
                   <button>Completed</button>
                 </div>
 
-                <button>Clear Completed</button>
+                <button onClick={todoCtx?.clearCompleted}>
+                  Clear Completed
+                </button>
               </footer>
             </div>
           </div>

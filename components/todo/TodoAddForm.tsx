@@ -15,6 +15,7 @@ const TodoAddForm: React.FC = () => {
 
     const newTodo: ITodo = {
       id: (Date.now() + Math.random()).toString(),
+      isVisible: true,
       completed: newTodoIsCompleted,
       title: newTodoTitle,
     };
