@@ -53,11 +53,18 @@ const Home: NextPage = () => {
 
                 <div className="flex items-center gap-4">
                   <button className="text-app-primary-bright-blue">All</button>
-                  <button>Active</button>
-                  <button>Completed</button>
+                  <button className="hover:text-app-tdark-gray-blue-300">
+                    Active
+                  </button>
+                  <button className="hover:text-app-tdark-gray-blue-300">
+                    Completed
+                  </button>
                 </div>
 
-                <button onClick={todoCtx?.clearCompleted}>
+                <button
+                  className="hover:text-app-tdark-gray-blue-300"
+                  onClick={todoCtx?.clearCompleted}
+                >
                   Clear Completed
                 </button>
               </footer>
