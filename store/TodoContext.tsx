@@ -33,18 +33,49 @@ const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
     console.log(`Updating todo: ${todo.title}`);
   };
 
-  // const hideCompleted = () => {
-  //   todos.map((todo) => {
-  //     if (todo.completed === true) todo.isVisible = false;
-  //   });
+  const filterTodoListBy = (filterType: string) => {
+    switch (filterType) {
+      case 'all':
+        todos.map((todo: ITodo) => {
+          todo.isVisible = true;
+          setTodos([...todos]);
+        });
+        break;
+      case 'active':
+        // Set visibiliy of all todos back to true initially — this is mandatory after switching between filters
+        todos.map((todo: ITodo) => {
+          todo.isVisible = true;
+        });
 
-  //   setTodos(todos);
-  // };
+        todos.map((todo: ITodo) => {
+          if (todo.completed) {
+            todo.isVisible = false;
+            setTodos([...todos]);
+          }
+        });
+        break;
+      case 'completed':
+        // Set visibiliy of all todos back to true initially — this is mandatory after switching between filters
+        todos.map((todo: ITodo) => {
+          todo.isVisible = true;
+        });
+
+        todos.map((todo: ITodo) => {
+          if (!todo.completed) {
+            todo.isVisible = false;
+            setTodos([...todos]);
+          }
+        });
+        break;
+      default:
+        console.log('No matching filters...');
+    }
+  };
 
   const clearCompleted = () => {
-    const incompletedTodos = todos.filter((todo) => todo.completed === false);
-
-    setTodos(incompletedTodos);
+    setTodos((previousState) =>
+      previousState.filter((todo) => todo.completed === false)
+    );
   };
 
   return (
@@ -57,6 +88,7 @@ const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
         addTodo,
         deleteTodo,
         updateTodo,
+        filterTodoListBy,
         clearCompleted,
       }}
     >

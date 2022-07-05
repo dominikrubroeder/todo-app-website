@@ -25,7 +25,7 @@ const TodoCompletedInput: React.FC<TodoCompletedInputProps> = (props) => {
 
       {!props.isCompleted && (
         <div className="shrink-0 flex items-center justify-center w-4 h-4 opacity-0 invisible bg-app-primary-background rounded-full transition-all z-20 group-hover:opacity-100 group-hover:visible">
-          <div className="w-3 h-3 rounded-full bg-app-tdark-blue-desaturated-800"></div>
+          <div className="shrink-0 w-3.5 h-3.5 rounded-full bg-app-tdark-blue-desaturated-800"></div>
         </div>
       )}
     </div>

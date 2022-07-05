@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useContext } from 'react';
 import TodoAddForm from '../components/todo/TodoAddForm';
 import TodoList from '../components/todo/TodoList';
+import TodoListFilter from '../components/todo/TodoListFilter';
 import { TodoContext } from '../store/TodoContext';
 
 const Home: NextPage = () => {
@@ -51,14 +52,8 @@ const Home: NextPage = () => {
                   {todoCtx?.incompletedCount}/{todoCtx?.count} items left
                 </span>
 
-                <div className="flex items-center gap-4">
-                  <button className="text-app-primary-bright-blue">All</button>
-                  <button className="hover:text-app-tdark-gray-blue-300">
-                    Active
-                  </button>
-                  <button className="hover:text-app-tdark-gray-blue-300">
-                    Completed
-                  </button>
+                <div className="hidden sm:inline-block">
+                  <TodoListFilter />
                 </div>
 
                 <button
@@ -72,9 +67,13 @@ const Home: NextPage = () => {
           </div>
         </div>
 
-        <footer className="text-app-tdark-gray-blue-600 text-xs">
-          Drag and drop to reorder list
+        <footer className="flex items-center justify-center bg-app-tdark-blue-desaturated-800 rounded-md p-4 w-full sm:hidden">
+          <TodoListFilter />
         </footer>
+
+        <p className="text-app-tdark-gray-blue-600 text-xs">
+          Drag and drop to reorder list
+        </p>
       </main>
     </div>
   );

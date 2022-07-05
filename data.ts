@@ -13,6 +13,7 @@ export type TodoContextType = {
   addTodo: (todo: ITodo) => void;
   deleteTodo: (todoId: string) => void;
   updateTodo: (todo: ITodo) => void;
+  filterTodoListBy: (filterType: string) => void;
   clearCompleted: () => void;
 };
 
@@ -52,5 +53,21 @@ export const initialTodos: ITodo[] = [
     isVisible: true,
     completed: false,
     title: 'Complete Todo App on Frontend Mentor',
+  },
+];
+
+interface ITodoListFilter {
+  title: string;
+}
+
+export const todoListFilter: ITodoListFilter[] = [
+  {
+    title: 'All',
+  },
+  {
+    title: 'Active',
+  },
+  {
+    title: 'Completed',
   },
 ];
