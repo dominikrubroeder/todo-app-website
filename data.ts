@@ -12,7 +12,7 @@ export type TodoContextType = {
   incompletedCount: number;
   addTodo: (todo: ITodo) => void;
   deleteTodo: (todoId: string) => void;
-  updateTodo: (todo: ITodo) => void;
+  updateTodo: (todoId: string, property: string, payload: any) => void;
   filterTodoListBy: (filterType: string) => void;
   clearCompleted: () => void;
 };

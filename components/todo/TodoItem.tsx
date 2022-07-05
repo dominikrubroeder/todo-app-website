@@ -22,8 +22,8 @@ const TodoItem: React.FC<TodoItemProps> = (props) => {
       }`}
     >
       <TodoCompletedInput
-        isCompleted={todo.completed}
-        onClick={() => console.log('Update completed...')}
+        todoId={props.todo.id}
+        todoCompleted={todo.completed}
       />
 
       <div className="group flex items-center justify-between w-full">

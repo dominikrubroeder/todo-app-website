@@ -28,9 +28,17 @@ const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
     );
   };
 
-  const updateTodo = (todo: ITodo) => {
+  const updateTodo = (todoId: string, property: string, payload: any) => {
     // Updating todo...
-    console.log(`Updating todo: ${todo.title}`);
+    console.log(`Updating todo: ${todoId}`);
+
+    todos.map((todo: ITodo) => {
+      if (todo.id === todoId) {
+        // todo[property] = payload;
+        todo['completed'] = payload;
+        setTodos([...todos]);
+      }
+    });
   };
 
   const filterTodoListBy = (filterType: string) => {
