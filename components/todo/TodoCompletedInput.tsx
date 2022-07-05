@@ -5,15 +5,21 @@ import { TodoContext } from '../../store/TodoContext';
 interface TodoCompletedInputProps {
   todoId: string;
   todoCompleted: boolean;
+  onClick: () => void;
 }
 
 const TodoCompletedInput: React.FC<TodoCompletedInputProps> = (props) => {
   const todoCtx = useContext(TodoContext);
 
   const onClickHandler = () => {
-    todoCtx?.updateTodo(props.todoId, 'completed', {
-      payload: !props.todoCompleted,
-    });
+    // This check is required for using this component in `TodoAddForm`
+    // While creating a new todo there is no valid todoId yet
+    if (props.todoId === 'undefined') {
+      props.onClick();
+      return;
+    }
+
+    todoCtx?.updateTodo(props.todoId, 'completed', !props.todoCompleted);
   };
 
   return (

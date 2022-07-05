@@ -6,7 +6,7 @@ import TodoCompletedInput from './TodoCompletedInput';
 const TodoAddForm: React.FC = () => {
   const todoCtx = useContext(TodoContext);
   const [newTodoTitle, setNewTodoTitle] = useState<string>('');
-  const [newTodoIsCompleted, setNewTodoIsCompleted] = useState<boolean>(false);
+  const [newTodoCompleted, setNewTodoCompleted] = useState<boolean>(false);
 
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -16,14 +16,14 @@ const TodoAddForm: React.FC = () => {
     const newTodo: ITodo = {
       id: (Date.now() + Math.random()).toString(),
       isVisible: true,
-      completed: newTodoIsCompleted,
+      completed: newTodoCompleted,
       title: newTodoTitle,
     };
 
     todoCtx?.addTodo(newTodo);
 
     setNewTodoTitle('');
-    setNewTodoIsCompleted(false);
+    setNewTodoCompleted(false);
   };
 
   return (
@@ -32,8 +32,9 @@ const TodoAddForm: React.FC = () => {
       onSubmit={(e) => onSubmitHandler(e)}
     >
       <TodoCompletedInput
-        isCompleted={newTodoIsCompleted}
-        onClick={() => setNewTodoIsCompleted((previousState) => !previousState)}
+        todoId={'undefined'}
+        todoCompleted={newTodoCompleted}
+        onClick={() => setNewTodoCompleted((previousState) => !previousState)}
       />
 
       <input

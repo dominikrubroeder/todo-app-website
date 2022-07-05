@@ -23,7 +23,8 @@ const TodoItem: React.FC<TodoItemProps> = (props) => {
     >
       <TodoCompletedInput
         todoId={props.todo.id}
-        todoCompleted={todo.completed}
+        todoCompleted={props.todo.completed}
+        onClick={() => {}}
       />
 
       <div className="group flex items-center justify-between w-full">
