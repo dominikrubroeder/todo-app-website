@@ -24,7 +24,7 @@ const TodoCompletedInput: React.FC<TodoCompletedInputProps> = (props) => {
 
   return (
     <div
-      className={`shrink-0 flex items-center justify-center w-4 h-4 border border-app-tdark-gray-blue-600 rounded-full cursor-pointer transition-all ${
+      className={`shrink-0 flex items-center justify-center w-4 h-4 border border-app-tlight-gray-blue-600 rounded-full cursor-pointer transition-all ${
         props.todoCompleted
           ? 'bg-app-primary-background'
           : 'bg-transparent group'
@@ -42,7 +42,7 @@ const TodoCompletedInput: React.FC<TodoCompletedInputProps> = (props) => {
 
       {!props.todoCompleted && (
         <div className="shrink-0 flex items-center justify-center w-4 h-4 opacity-0 invisible bg-app-primary-background rounded-full transition-all z-20 group-hover:opacity-100 group-hover:visible">
-          <div className="shrink-0 w-3.5 h-3.5 rounded-full bg-app-tdark-blue-desaturated-800"></div>
+          <div className="shrink-0 w-3.5 h-3.5 rounded-full bg-app-tlight-blue-desaturated-800"></div>
         </div>
       )}
     </div>

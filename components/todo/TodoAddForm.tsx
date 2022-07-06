@@ -28,7 +28,7 @@ const TodoAddForm: React.FC = () => {
 
   return (
     <form
-      className="flex items-center gap-4 bg-app-tdark-blue-desaturated-800 p-4 rounded-md"
+      className="flex items-center gap-4 p-4 rounded-md bg-white dark:bg-app-tlight-blue-desaturated-800"
       onSubmit={(e) => onSubmitHandler(e)}
     >
       <TodoCompletedInput

@@ -20,7 +20,7 @@ const TodoListFilter: React.FC = () => {
           className={`${
             index === activeFilter
               ? 'text-app-primary-bright-blue'
-              : 'hover:text-app-tdark-gray-blue-300'
+              : 'hover:text-app-tlight-gray-blue-300'
           }`}
           onClick={() => onClickHandler(index, filter.title)}
         >

@@ -18,7 +18,7 @@ const TodoItem: React.FC<TodoItemProps> = (props) => {
       className={`flex items-center gap-4 p-4 border-b ${
         props.isLast
           ? 'border-b-transparent'
-          : 'border-b-app-tdark-gray-blue-600'
+          : 'border-b-app-tlight-gray-blue-600'
       }`}
     >
       <TodoCompletedInput
@@ -30,7 +30,7 @@ const TodoItem: React.FC<TodoItemProps> = (props) => {
       <div className="group flex items-center gap-2 justify-between w-full">
         <h2
           className={`text-xs sm:text-md ${
-            todo.completed ? 'line-through text-app-tdark-gray-blue-600' : ''
+            todo.completed ? 'line-through text-app-tlight-gray-blue-600' : ''
           }`}
         >
           {todo.title}
