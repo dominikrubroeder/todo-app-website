@@ -57,12 +57,14 @@ const Home: NextPage = () => {
                   </div>
                 )}
 
-                <button
-                  className="hover:text-app-tlight-gray-blue-300"
-                  onClick={todoCtx?.clearCompleted}
-                >
-                  Clear Completed
-                </button>
+                {todoCtx!.count > 0 && (
+                  <button
+                    className="hover:text-app-tlight-gray-blue-300"
+                    onClick={todoCtx?.clearCompleted}
+                  >
+                    Clear Completed
+                  </button>
+                )}
               </footer>
             </div>
           </div>

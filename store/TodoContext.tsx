@@ -29,9 +29,6 @@ const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
   };
 
   const updateTodo = (todoId: string, property: string, payload: any) => {
-    // Updating todo...
-    console.log(`Updating todo: ${todoId}`);
-
     todos.map((todo: ITodo) => {
       if (todo.id === todoId) {
         // todo[property] = payload;
@@ -44,36 +41,38 @@ const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
   const filterTodoListBy = (filterType: string) => {
     switch (filterType) {
       case 'all':
-        todos.map((todo: ITodo) => {
+        todos.map((todo) => {
           todo.isVisible = true;
           setTodos([...todos]);
         });
         break;
       case 'active':
         // Set visibiliy of all todos back to true initially — this is mandatory after switching between filters
-        todos.map((todo: ITodo) => {
+        todos.map((todo) => {
           todo.isVisible = true;
         });
 
-        todos.map((todo: ITodo) => {
+        todos.map((todo) => {
           if (todo.completed) {
             todo.isVisible = false;
-            setTodos([...todos]);
           }
         });
+
+        setTodos([...todos]);
         break;
       case 'completed':
         // Set visibiliy of all todos back to true initially — this is mandatory after switching between filters
-        todos.map((todo: ITodo) => {
+        todos.map((todo) => {
           todo.isVisible = true;
         });
 
-        todos.map((todo: ITodo) => {
+        todos.map((todo) => {
           if (!todo.completed) {
             todo.isVisible = false;
-            setTodos([...todos]);
           }
         });
+
+        setTodos([...todos]);
         break;
       default:
         console.log('No matching filters...');
