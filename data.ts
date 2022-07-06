@@ -17,6 +17,16 @@ export type TodoContextType = {
   clearCompleted: () => void;
 };
 
+export enum Theme {
+  DARK = 'dark',
+  LIGHT = 'light',
+}
+
+export type ThemeContextType = {
+  theme: string;
+  toggleTheme: () => void;
+};
+
 export const initialTodos: ITodo[] = [
   {
     id: (Date.now() + Math.random()).toString(),
