@@ -29,8 +29,10 @@ const TodoItem: React.FC<TodoItemProps> = (props) => {
 
       <div className="group flex items-center gap-2 justify-between w-full">
         <h2
-          className={`text-xs sm:text-md ${
-            todo.completed ? 'line-through text-app-tlight-gray-blue-600' : ''
+          className={`text-xs sm:text-md dark:text-app-tdark-gray-blue-600 ${
+            todo.completed
+              ? 'line-through text-app-tlight-gray-blue-600 dark:text-app-tdark-gray-blue-600'
+              : ''
           }`}
         >
           {todo.title}

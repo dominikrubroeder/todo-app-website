@@ -25,7 +25,9 @@ const TodoList: React.FC = () => {
       )}
 
       {todoCtx?.count === 0 && (
-        <p className="p-4 text-center">Currently no todos are added.</p>
+        <p className="p-4 text-center dark:text-app-tdark-gray-blue-300">
+          Currently no todos are added.
+        </p>
       )}
     </Fragment>
   );

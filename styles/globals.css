@@ -34,3 +34,9 @@
     font-size: 1.125rem;
   }
 }
+
+@layer components {
+  .smooth-transition {
+    @apply transition-all duration-300;
+  }
+}

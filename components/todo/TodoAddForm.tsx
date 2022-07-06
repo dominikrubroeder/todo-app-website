@@ -28,11 +28,11 @@ const TodoAddForm: React.FC = () => {
 
   return (
     <form
-      className="flex items-center gap-4 p-4 rounded-md bg-white dark:bg-app-tlight-blue-desaturated-800"
+      className="flex items-center gap-4 p-4 rounded-md bg-white dark:bg-app-tdark-blue-desaturated-800 dark:text-app-tdark-gray-blue-300"
       onSubmit={(e) => onSubmitHandler(e)}
     >
       <TodoCompletedInput
-        todoId={'undefined'}
+        todoId="undefined"
         todoCompleted={newTodoCompleted}
         onClick={() => setNewTodoCompleted((previousState) => !previousState)}
       />
