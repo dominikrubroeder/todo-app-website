@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { TodoContext } from '../../store/TodoContext';
 import TodoItem from './TodoItem';
 
@@ -6,20 +6,28 @@ const TodoList: React.FC = () => {
   const todoCtx = useContext(TodoContext);
 
   return (
-    <ul className="grid">
-      {todoCtx?.todos.map((todo, index) => {
-        if (todo.isVisible) {
-          return (
-            <li key={todo.id}>
-              <TodoItem
-                todo={todo}
-                isLast={index + 1 === todoCtx?.todos.length}
-              />
-            </li>
-          );
-        }
-      })}
-    </ul>
+    <Fragment>
+      {todoCtx?.count !== 0 && (
+        <ul className="grid">
+          {todoCtx?.todos.map((todo, index) => {
+            if (todo.isVisible) {
+              return (
+                <li key={todo.id}>
+                  <TodoItem
+                    todo={todo}
+                    isLast={index + 1 === todoCtx?.todos.length}
+                  />
+                </li>
+              );
+            }
+          })}
+        </ul>
+      )}
+
+      {todoCtx?.count === 0 && (
+        <p className="p-4 text-center">Currently no todos are added.</p>
+      )}
+    </Fragment>
   );
 };
 

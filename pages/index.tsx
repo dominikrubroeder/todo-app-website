@@ -18,7 +18,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/images/favicon-32x32.png" type="image/png" />
       </Head>
 
-      <main className="flex items-center justify-center flex-col gap-16 min-h-screen bg-app-tdark-blue-800">
+      <main className="flex items-center justify-center flex-col gap-4 min-h-screen px-4 py-12 sm:gap-16 sm:px-0 sm:py-0 bg-app-tdark-blue-800">
         <div className="absolute top-0 left-0 right-0 bg-app-bg-desktop-dark bg-no-repeat bg-center bg-cover h-[35vh]"></div>
 
         <div className="grid gap-8 relative max-w-screen-sm w-full z-10">
@@ -52,9 +52,11 @@ const Home: NextPage = () => {
                   {todoCtx?.incompletedCount}/{todoCtx?.count} items left
                 </span>
 
-                <div className="hidden sm:inline-block">
-                  <TodoListFilter />
-                </div>
+                {todoCtx!.count > 0 && (
+                  <div className="hidden sm:inline-block">
+                    <TodoListFilter />
+                  </div>
+                )}
 
                 <button
                   className="hover:text-app-tdark-gray-blue-300"
@@ -67,13 +69,17 @@ const Home: NextPage = () => {
           </div>
         </div>
 
-        <footer className="flex items-center justify-center bg-app-tdark-blue-desaturated-800 rounded-md p-4 w-full sm:hidden">
-          <TodoListFilter />
-        </footer>
+        {todoCtx!.count > 0 && (
+          <footer className="flex items-center justify-center bg-app-tdark-blue-desaturated-800 rounded-md p-4 w-full sm:hidden">
+            <TodoListFilter />
+          </footer>
+        )}
 
-        <p className="text-app-tdark-gray-blue-600 text-xs">
-          Drag and drop to reorder list
-        </p>
+        {todoCtx!.count > 0 && (
+          <p className="text-app-tdark-gray-blue-600 text-xs">
+            Drag and drop to reorder list
+          </p>
+        )}
       </main>
     </div>
   );

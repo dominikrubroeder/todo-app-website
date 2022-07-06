@@ -27,9 +27,9 @@ const TodoItem: React.FC<TodoItemProps> = (props) => {
         onClick={() => {}}
       />
 
-      <div className="group flex items-center justify-between w-full">
+      <div className="group flex items-center gap-2 justify-between w-full">
         <h2
-          className={`${
+          className={`text-xs sm:text-md ${
             todo.completed ? 'line-through text-app-tdark-gray-blue-600' : ''
           }`}
         >
@@ -37,7 +37,7 @@ const TodoItem: React.FC<TodoItemProps> = (props) => {
         </h2>
 
         <button
-          className="invisible opacity-0 cursor-pointer transition-all group-hover:opacity-100 group-hover:visible"
+          className="cursor-pointer transition-all sm:invisible sm:opacity-0 sm:group-hover:opacity-100 sm:group-hover:visible"
           onClick={() => todoCtx?.deleteTodo(todo.id)}
         >
           <Image
