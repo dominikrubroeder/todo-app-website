@@ -26,52 +26,62 @@ const Home: NextPage = () => {
         <div className="absolute top-0 left-0 right-0 bg-app-bg-desktop-light bg-no-repeat bg-center bg-cover h-[35vh] smooth-transition dark:bg-app-bg-desktop-dark"></div>
 
         <div className="grid gap-8 relative max-w-screen-sm w-full z-10">
-          <header className="flex items-center justify-between">
-            <h1 className="tracking-[0.5rem] uppercase text-3xl font-bold text-white">
-              Todo
-            </h1>
+          <header className="fixed max-w-screen-sm top-32 w-full grid gap-8">
+            <div className="flex items-center justify-between">
+              <h1 className="tracking-[0.5rem] uppercase text-3xl font-bold text-white">
+                Todo
+              </h1>
 
-            <ThemeSwitch />
+              <ThemeSwitch />
+            </div>
+
+            <TodoAddForm />
           </header>
 
-          <div className="grid gap-4 drop-shadow-2xl">
-            <TodoAddForm />
-
+          <div
+            className={`grid gap-4 drop-shadow-2xl ${
+              todoCtx!.count > 0 ? 'mt-24' : 'mt-0'
+            }`}
+          >
             <div className="bg-white dark:bg-app-tdark-blue-desaturated-800 rounded-md">
               <div
                 className={`${
-                  todoCtx!.todos.length > 6 ? 'h-96 overflow-y-scroll' : ''
+                  todoCtx!.count > 6
+                    ? 'h-96 overflow-y-scroll'
+                    : 'min-h-[21rem]'
+                } ${
+                  todoCtx?.count === 0 ? 'flex items-center justify-center' : ''
                 }`}
               >
                 <TodoList />
               </div>
 
-              <footer className="flex items-center justify-between p-4 text-xs text-app-tlight-gray-blue-600 border-t border-t-app-tlight-gray-blue-600">
-                <span>
-                  {todoCtx?.incompletedCount}/{todoCtx?.count} items left
-                </span>
+              {todoCtx!.count > 0 && (
+                <footer className="flex items-center justify-between p-4 text-xs text-app-tlight-gray-blue-600">
+                  <span className="text-sm">
+                    {todoCtx?.incompletedCount}/{todoCtx?.count} items left
+                  </span>
 
-                {todoCtx!.count > 0 && (
                   <div className="hidden sm:inline-block">
                     <TodoListFilter />
                   </div>
-                )}
 
-                {todoCtx!.count > 0 && (
-                  <button
-                    className="hover:text-app-tlight-gray-blue-300"
-                    onClick={todoCtx?.clearCompleted}
-                  >
-                    Clear Completed
-                  </button>
-                )}
-              </footer>
+                  {todoCtx!.completedCount > 0 && (
+                    <button
+                      className="text-sm text-app-tlight-gray-blue-600 hover:text-app-tlight-gray-blue-800 dark:hover:text-app-tlight-gray-blue-300"
+                      onClick={todoCtx?.clearCompleted}
+                    >
+                      Clear Completed
+                    </button>
+                  )}
+                </footer>
+              )}
             </div>
           </div>
         </div>
 
         {todoCtx!.count > 0 && (
-          <footer className="flex items-center justify-center bg-white dark:bg-app-tlight-blue-desaturated-800 rounded-md p-4 w-full drop-shadow-2xl sm:hidden">
+          <footer className="flex items-center justify-center bg-white dark:bg-app-tdark-blue-desaturated-800 rounded-md p-4 w-full drop-shadow-2xl sm:hidden">
             <TodoListFilter />
           </footer>
         )}

@@ -17,10 +17,10 @@ const TodoListFilter: React.FC = () => {
       {todoListFilter.map((filter, index) => (
         <button
           key={index}
-          className={`${
+          className={`text-sm text-app-tlight-gray-blue-600 dark:text-app-tdark-gray-blue-600 ${
             index === activeFilter
-              ? 'text-app-primary-bright-blue'
-              : 'hover:text-app-tlight-gray-blue-300'
+              ? 'text-app-primary-bright-blue dark:text-app-primary-bright-blue'
+              : 'hover:text-app-tlight-gray-blue-800 dark:hover:text-app-tdark-gray-blue-300'
           }`}
           onClick={() => onClickHandler(index, filter.title)}
         >

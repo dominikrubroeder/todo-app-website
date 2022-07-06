@@ -24,7 +24,7 @@ const TodoCompletedInput: React.FC<TodoCompletedInputProps> = (props) => {
 
   return (
     <div
-      className={`shrink-0 flex items-center justify-center w-4 h-4 border border-app-tlight-gray-blue-600 rounded-full cursor-pointer transition-all ${
+      className={`shrink-0 flex items-center justify-center w-4 h-4 border border-app-tlight-gray-blue-300 dark:border-app-tdark-gray-blue-800 rounded-full cursor-pointer transition-all ${
         props.todoCompleted
           ? 'bg-app-primary-background'
           : 'bg-transparent group'

@@ -40,7 +40,7 @@ const TodoAddForm: React.FC = () => {
       <input
         type="text"
         placeholder="Create a new todo..."
-        className="flex-1 bg-transparent focus:outline-none"
+        className="flex-1 bg-transparent text-xs sm:text-lg focus:outline-none"
         value={newTodoTitle}
         onChange={(e) => setNewTodoTitle(e.target.value)}
       />
