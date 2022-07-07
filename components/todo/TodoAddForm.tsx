@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { ITodo } from '../../data';
 import { TodoContext } from '../../store/TodoContext';
-import TodoCompletedInput from './TodoCompletedInput';
+import TodoItemCompletedInput from './todo-item/TodoItemCompletedInput';
 
 const TodoAddForm: React.FC = () => {
   const todoCtx = useContext(TodoContext);
@@ -31,7 +31,7 @@ const TodoAddForm: React.FC = () => {
       className="flex items-center gap-4 p-4 rounded-md bg-white dark:bg-app-tdark-blue-desaturated-800 dark:text-app-tdark-gray-blue-300"
       onSubmit={(e) => onSubmitHandler(e)}
     >
-      <TodoCompletedInput
+      <TodoItemCompletedInput
         todoId="undefined"
         todoCompleted={newTodoCompleted}
         onClick={() => setNewTodoCompleted((previousState) => !previousState)}

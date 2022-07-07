@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
-import { TodoContext } from '../../store/TodoContext';
-import { todoListFilter } from '../../data';
+import { TodoContext } from '../../../store/TodoContext';
+import { todoListFilter } from '../../../data';
 
 const TodoListFilter: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<number>(0);

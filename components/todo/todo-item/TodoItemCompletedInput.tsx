@@ -1,14 +1,16 @@
 import React, { useContext } from 'react';
 import Image from 'next/image';
-import { TodoContext } from '../../store/TodoContext';
+import { TodoContext } from '../../../store/TodoContext';
 
-interface TodoCompletedInputProps {
+interface TodoItemCompletedInputProps {
   todoId: string;
   todoCompleted: boolean;
   onClick: () => void;
 }
 
-const TodoCompletedInput: React.FC<TodoCompletedInputProps> = (props) => {
+const TodoItemCompletedInput: React.FC<TodoItemCompletedInputProps> = (
+  props
+) => {
   const todoCtx = useContext(TodoContext);
 
   const onClickHandler = () => {
@@ -49,4 +51,4 @@ const TodoCompletedInput: React.FC<TodoCompletedInputProps> = (props) => {
   );
 };
 
-export default TodoCompletedInput;
+export default TodoItemCompletedInput;

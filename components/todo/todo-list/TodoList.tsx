@@ -1,6 +1,6 @@
 import React, { Fragment, useContext } from 'react';
-import { TodoContext } from '../../store/TodoContext';
-import TodoItem from './TodoItem';
+import { TodoContext } from '../../../store/TodoContext';
+import TodoItem from '../todo-item/TodoItem';
 
 const TodoList: React.FC = () => {
   const todoCtx = useContext(TodoContext);

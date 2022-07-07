@@ -1,18 +1,16 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import TodoAddForm from '../components/todo/TodoAddForm';
-import TodoList from '../components/todo/TodoList';
-import TodoListFilter from '../components/todo/TodoListFilter';
 import { TodoContext } from '../store/TodoContext';
-import { ThemeContext } from '../store/ThemeContext';
-import { Theme } from '../data';
 import ThemeSwitch from '../components/ThemeSwitch';
+import MainBackgroundImage from '../components/MainBackgroundImage';
+import TodoListFooter from '../components/todo/todo-list/TodoListFooter';
+import TodoListFooterMinimal from '../components/todo/todo-list/TodoListFooterMinimal';
+import TodoListScrollable from '../components/todo/todo-list/TodoListScrollable';
 
 const Home: NextPage = () => {
   const todoCtx = useContext(TodoContext);
-  const themeCtx = useContext(ThemeContext);
 
   return (
     <div>
@@ -23,10 +21,10 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="flex items-center justify-center flex-col gap-4 min-h-screen px-4 py-12 bg-app-tlight-gray-100 smooth-transition dark:bg-app-tdark-blue-800 sm:gap-16 sm:px-0 sm:py-0">
-        <div className="absolute top-0 left-0 right-0 bg-app-bg-desktop-light bg-no-repeat bg-center bg-cover h-[35vh] smooth-transition dark:bg-app-bg-desktop-dark"></div>
+        <MainBackgroundImage />
 
         <div className="grid gap-8 relative max-w-screen-sm w-full z-10">
-          <header className="fixed max-w-screen-sm top-32 w-full grid gap-8">
+          <header className="fixed max-w-xs top-16 w-full grid gap-4 sm:gap-8 sm:max-w-screen-sm sm:top-32">
             <div className="flex items-center justify-between">
               <h1 className="tracking-[0.5rem] uppercase text-3xl font-bold text-white">
                 Todo
@@ -44,47 +42,14 @@ const Home: NextPage = () => {
             }`}
           >
             <div className="bg-white dark:bg-app-tdark-blue-desaturated-800 rounded-md">
-              <div
-                className={`${
-                  todoCtx!.count > 6
-                    ? 'h-96 overflow-y-scroll'
-                    : 'min-h-[21rem]'
-                } ${
-                  todoCtx?.count === 0 ? 'flex items-center justify-center' : ''
-                }`}
-              >
-                <TodoList />
-              </div>
+              <TodoListScrollable />
 
-              {todoCtx!.count > 0 && (
-                <footer className="flex items-center justify-between p-4 text-xs text-app-tlight-gray-blue-600">
-                  <span className="text-sm">
-                    {todoCtx?.incompletedCount}/{todoCtx?.count} items left
-                  </span>
-
-                  <div className="hidden sm:inline-block">
-                    <TodoListFilter />
-                  </div>
-
-                  {todoCtx!.completedCount > 0 && (
-                    <button
-                      className="text-sm text-app-tlight-gray-blue-600 hover:text-app-tlight-gray-blue-800 dark:hover:text-app-tlight-gray-blue-300"
-                      onClick={todoCtx?.clearCompleted}
-                    >
-                      Clear Completed
-                    </button>
-                  )}
-                </footer>
-              )}
+              {todoCtx!.count > 0 && <TodoListFooter />}
             </div>
           </div>
         </div>
 
-        {todoCtx!.count > 0 && (
-          <footer className="flex items-center justify-center bg-white dark:bg-app-tdark-blue-desaturated-800 rounded-md p-4 w-full drop-shadow-2xl sm:hidden">
-            <TodoListFilter />
-          </footer>
-        )}
+        {todoCtx!.count > 0 && <TodoListFooterMinimal />}
 
         {todoCtx!.count > 0 && (
           <p className="text-app-tlight-gray-blue-600 dark:text-app-tdark-gray-blue-600 text-xs">

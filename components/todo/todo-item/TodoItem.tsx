@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import React, { useContext } from 'react';
-import { ITodo } from '../../data';
-import TodoCompletedInput from './TodoCompletedInput';
-import { TodoContext } from '../../store/TodoContext';
+import { ITodo } from '../../../data';
+import TodoItemCompletedInput from './TodoItemCompletedInput';
+import { TodoContext } from '../../../store/TodoContext';
 
 interface TodoItemProps {
   todo: ITodo;
@@ -17,7 +17,7 @@ const TodoItem: React.FC<TodoItemProps> = (props) => {
     <div
       className={`flex items-center gap-4 p-4 border-b border-b-app-tlight-gray-blue-300 dark:border-b-app-tdark-gray-blue-800`}
     >
-      <TodoCompletedInput
+      <TodoItemCompletedInput
         todoId={props.todo.id}
         todoCompleted={props.todo.completed}
         onClick={() => {}}
